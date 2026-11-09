@@ -39,11 +39,12 @@
             font-family: 'Inter', 'Noto Sans Armenian', sans-serif;
             background-color: #ffffff;
             color: #0f172a;
-            user-select: none;
+            user-select: none; /* Anti-copy CSS support */
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
         }
+        /* Allow inputs to be selectable for smooth typing */
         input, select, textarea {
             user-select: text !important;
             -webkit-user-select: text !important;
@@ -61,24 +62,28 @@
 
     <!-- TOP BAR / HEADER -->
     <header class="w-full bg-white border-b border-slate-200 sticky top-0 z-40">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+            <!-- Brand Logo & Name -->
             <div class="flex items-center space-x-3">
-                <div class="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg tracking-wider shadow-sm">
+                <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-xl tracking-wider shadow-sm">
                     FYM
                 </div>
                 <div>
-                    <h1 class="font-bold text-base text-slate-900 tracking-tight leading-none">FYM Hospitality Group</h1>
-                    <p class="text-[11px] text-slate-500 font-medium tracking-wide uppercase mt-0.5">HR Assessment Center</p>
+                    <h1 class="font-bold text-lg text-slate-900 tracking-tight leading-none">FYM Hospitality Group</h1>
+                    <p class="text-xs text-slate-500 font-medium tracking-wide uppercase mt-0.5">HR Assessment Center</p>
                 </div>
             </div>
 
-            <div class="flex items-center space-x-3">
-                <div id="timerContainer" class="hidden items-center bg-amber-50 border border-amber-200 text-amber-800 px-3 py-1 rounded-lg text-xs font-semibold animate-pulse">
-                    <i class="fa-regular fa-clock mr-1.5 text-amber-600"></i>
+            <!-- Header Controls: Timer & Admin Toggle -->
+            <div class="flex items-center space-x-4">
+                <!-- Live Countdown Timer (Visible during exam) -->
+                <div id="timerContainer" class="hidden items-center bg-amber-50 border border-amber-200 text-amber-800 px-3.5 py-1.5 rounded-lg text-sm font-semibold animate-pulse">
+                    <i class="fa-regular fa-clock mr-2 text-amber-600"></i>
                     <span id="timerDisplay">10:00</span>
                 </div>
 
-                <button onclick="openAdminModal()" class="flex items-center space-x-1.5 text-[11px] font-semibold uppercase tracking-wider text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 px-2.5 py-1.5 rounded-lg transition">
+                <!-- Admin Access Button -->
+                <button onclick="openAdminModal()" class="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg transition">
                     <i class="fa-solid fa-lock text-slate-500"></i>
                     <span class="hidden sm:inline">HR Admin</span>
                 </button>
@@ -87,58 +92,64 @@
     </header>
 
     <!-- MAIN CONTAINER -->
-    <main class="flex-grow w-full max-w-3xl mx-auto px-4 py-6 flex flex-col justify-center">
+    <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-8 sm:py-12 flex flex-col justify-center">
 
         <!-- 1. LANDING & CANDIDATE REGISTRATION -->
-        <section id="landingPage" class="space-y-5">
-            <div class="text-center space-y-1.5">
-                <span class="inline-block px-2.5 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-full uppercase tracking-wider">Պաշտոնական Թեստավորում</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight uppercase">ԹԵՍՏ</h2>
-                <div class="w-12 h-1 bg-slate-900 mx-auto rounded-full mt-1"></div>
+        <section id="landingPage" class="space-y-8">
+            <div class="text-center space-y-3">
+                <span class="inline-block px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-full uppercase tracking-wider">Պաշտոնական Թեստավորում</span>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight uppercase">ԹԵՍՏ</h2>
+                <div class="w-16 h-1 bg-slate-900 mx-auto rounded-full mt-2"></div>
             </div>
 
-            <div class="glass-card p-5 sm:p-6 rounded-2xl border-l-4 border-l-slate-900 custom-shadow">
-                <div class="flex items-start space-x-3.5">
-                    <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center shrink-0 font-bold text-sm">
+            <!-- Instruction Card -->
+            <div class="glass-card p-6 sm:p-8 rounded-2xl border-l-4 border-l-slate-900 custom-shadow">
+                <div class="flex items-start space-x-4">
+                    <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center shrink-0 font-bold">
                         <i class="fa-solid fa-circle-info"></i>
                     </div>
-                    <div class="space-y-2 text-slate-700 text-xs sm:text-sm leading-relaxed">
+                    <div class="space-y-3 text-slate-700 text-sm sm:text-base leading-relaxed">
                         <p class="font-medium text-slate-900">
                             Մտածեք այն իրավիճակների մասին, երբ ձեր ցանկությունները տարբերվում են մեկ այլ անձի ցանկություններից։ Ինչպե՞ս եք սովորաբար արձագանքում նման իրավիճակներին։
                         </p>
                         <p>
                             Յուրաքանչյուր զույգի համար շրջանագծի մեջ վերցրեք <strong>«A»</strong> կամ <strong>«B»</strong> տարբերակը, որն առավել բնորոշ է ձեր վարքագծին։
                         </p>
+                        <div class="flex items-center text-xs text-amber-700 bg-amber-50/80 p-3 rounded-lg border border-amber-200 mt-2">
+                            <i class="fa-solid fa-triangle-exclamation mr-2 text-amber-600 shrink-0"></i>
+                            <span>Ուշադրություն․ Թեստի հատկացված ժամանակը <strong>10 րոպե է</strong>։ Թեստի ընթացքում պատուհանից հեռանալը կամ տեքստի պատճենումը գրանցվում է համակարգում։</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <form id="candidateForm" onsubmit="startAssessment(event)" class="glass-card p-5 sm:p-6 rounded-2xl custom-shadow space-y-4">
-                <h3 class="text-sm font-bold text-slate-900 flex items-center uppercase tracking-wide">
+            <!-- Candidate Info Form -->
+            <form id="candidateForm" onsubmit="startAssessment(event)" class="glass-card p-6 sm:p-8 rounded-2xl custom-shadow space-y-6">
+                <h3 class="text-lg font-bold text-slate-900 flex items-center">
                     <i class="fa-regular fa-id-card mr-2 text-slate-600"></i>
                     Դիմորդի Տվյալները
                 </h3>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                        <label for="firstName" class="block text-[11px] font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Անուն *</label>
+                        <label for="firstName" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Անուն *</label>
                         <input type="text" id="firstName" required placeholder="Մուտքագրեք անունը" 
-                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-slate-900 focus:border-slate-900 outline-none text-slate-900 text-sm transition">
+                            class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-slate-900 focus:border-slate-900 outline-none text-slate-900 text-sm transition">
                     </div>
                     <div>
-                        <label for="lastName" class="block text-[11px] font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Ազգանուն *</label>
+                        <label for="lastName" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Ազգանուն *</label>
                         <input type="text" id="lastName" required placeholder="Մուտքագրեք ազգանունը" 
-                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-slate-900 focus:border-slate-900 outline-none text-slate-900 text-sm transition">
+                            class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-slate-900 focus:border-slate-900 outline-none text-slate-900 text-sm transition">
                     </div>
                 </div>
 
                 <div>
-                    <label for="position" class="block text-[11px] font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Հայցվող Պաշտոնը *</label>
+                    <label for="position" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Հայցվող Պաշտոնը *</label>
                     <input type="text" id="position" required placeholder="օր․ Restaurant Manager, Receptionist, HR Assistant" 
-                        class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-slate-900 focus:border-slate-900 outline-none text-slate-900 text-sm transition">
+                        class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-slate-900 focus:border-slate-900 outline-none text-slate-900 text-sm transition">
                 </div>
 
-                <button type="submit" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl text-sm tracking-wide transition transform active:scale-[0.99] flex items-center justify-center space-x-2 shadow-md">
+                <button type="submit" class="w-full py-4 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl text-base tracking-wide transition transform active:scale-[0.99] flex items-center justify-center space-x-2 shadow-lg">
                     <span>Սկսել Թեստավորումը</span>
                     <i class="fa-solid fa-arrow-right text-xs"></i>
                 </button>
@@ -146,153 +157,143 @@
         </section>
 
         <!-- 2. ASSESSMENT QUESTIONNAIRE PAGE (SINGLE QUESTION VIEW) -->
-        <section id="testPage" class="hidden space-y-4">
-            <div class="flex items-center justify-between text-xs font-semibold text-slate-600 bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-200">
+        <section id="testPage" class="hidden space-y-6">
+            <!-- Progress Info Header -->
+            <div class="flex items-center justify-between text-sm font-semibold text-slate-600 bg-slate-50 p-4 rounded-xl border border-slate-200">
                 <span id="questionCounter">Հարց 1 / 30</span>
-                <div class="w-1/3 bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                <div class="w-1/3 bg-slate-200 h-2 rounded-full overflow-hidden">
                     <div id="progressBar" class="bg-slate-900 h-full w-0 transition-all duration-300"></div>
                 </div>
             </div>
 
-            <div id="questionCard" class="glass-card p-5 sm:p-8 rounded-2xl custom-shadow space-y-5">
-                <div class="space-y-3">
-                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest block">Հարցերից ընտրեք մեկը</span>
+            <!-- Single Question Card -->
+            <div id="questionCard" class="glass-card p-6 sm:p-10 rounded-2xl custom-shadow space-y-6 min-h-[300px] flex flex-col justify-between">
+                <div class="space-y-4">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Հարցերից ընտրեք մեկը</span>
                     
-                    <div class="space-y-3">
-                        <label id="labelOptionA" onclick="selectOption('A')" class="flex items-start p-4 rounded-xl border-2 border-slate-200 cursor-pointer hover:border-slate-400 transition bg-white group">
+                    <!-- Options Grid -->
+                    <div class="space-y-4">
+                        <!-- Option A -->
+                        <label id="labelOptionA" onclick="selectOption('A')" class="flex items-start p-5 rounded-xl border-2 border-slate-200 cursor-pointer hover:border-slate-400 transition bg-white group">
                             <input type="radio" name="currentQuestion" value="A" class="mt-1 text-slate-900 focus:ring-slate-900">
-                            <div class="ml-3.5 space-y-1">
-                                <span class="font-bold text-slate-900 mr-1.5 text-sm">A.</span>
-                                <span id="textOptionA" class="text-slate-700 text-sm sm:text-base leading-relaxed"></span>
+                            <div class="ml-4 space-y-1">
+                                <span class="font-bold text-slate-900 mr-2 text-base">A.</span>
+                                <span id="textOptionA" class="text-slate-700 text-base leading-relaxed"></span>
                             </div>
                         </label>
 
-                        <label id="labelOptionB" onclick="selectOption('B')" class="flex items-start p-4 rounded-xl border-2 border-slate-200 cursor-pointer hover:border-slate-400 transition bg-white group">
+                        <!-- Option B -->
+                        <label id="labelOptionB" onclick="selectOption('B')" class="flex items-start p-5 rounded-xl border-2 border-slate-200 cursor-pointer hover:border-slate-400 transition bg-white group">
                             <input type="radio" name="currentQuestion" value="B" class="mt-1 text-slate-900 focus:ring-slate-900">
-                            <div class="ml-3.5 space-y-1">
-                                <span class="font-bold text-slate-900 mr-1.5 text-sm">B.</span>
-                                <span id="textOptionB" class="text-slate-700 text-sm sm:text-base leading-relaxed"></span>
+                            <div class="ml-4 space-y-1">
+                                <span class="font-bold text-slate-900 mr-2 text-base">B.</span>
+                                <span id="textOptionB" class="text-slate-700 text-base leading-relaxed"></span>
                             </div>
                         </label>
                     </div>
                 </div>
 
-                <div class="flex items-center justify-between pt-4 border-t border-slate-100">
-                    <button id="btnPrev" onclick="prevQuestion()" class="px-4 py-2 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-50 transition flex items-center space-x-1.5 text-xs">
-                        <i class="fa-solid fa-chevron-left text-[10px]"></i>
+                <!-- Navigation Controls -->
+                <div class="flex items-center justify-between pt-6 border-t border-slate-100 mt-6">
+                    <button id="btnPrev" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-50 transition flex items-center space-x-2 text-sm">
+                        <i class="fa-solid fa-chevron-left text-xs"></i>
                         <span>Նախորդ</span>
                     </button>
                     
-                    <button id="btnNext" onclick="nextQuestion()" class="px-5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold transition flex items-center space-x-1.5 text-xs shadow">
+                    <button id="btnNext" onclick="nextQuestion()" class="px-6 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold transition flex items-center space-x-2 text-sm shadow">
                         <span id="btnNextText">Հաջորդ</span>
-                        <i id="btnNextIcon" class="fa-solid fa-chevron-right text-[10px]"></i>
+                        <i id="btnNextIcon" class="fa-solid fa-chevron-right text-xs"></i>
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- 3. COMPLETION THANK YOU PAGE & DETAILED INSIGHTS -->
-        <section id="thankYouPage" class="hidden text-center space-y-5 py-6">
-            <div class="glass-card p-6 sm:p-8 rounded-3xl custom-shadow space-y-6 max-w-2xl mx-auto text-left">
-                <div class="text-center space-y-3 border-b border-slate-100 pb-5">
-                    <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-xl border border-emerald-200">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
-                    
-                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">
-                        Շնորհակալություն թեստն անցնելու համար:
-                    </h2>
-                    
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        Ձեր պատասխաններն հաջողությամբ գրանցվել են FYM Hospitality Group-ի HR բաժնի կողմից։
-                    </p>
+        <!-- 3. COMPLETION THANK YOU PAGE -->
+        <section id="thankYouPage" class="hidden text-center space-y-6 py-12">
+            <div class="glass-card p-8 sm:p-12 rounded-3xl custom-shadow space-y-6 max-w-xl mx-auto">
+                <div class="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-3xl border border-emerald-200">
+                    <i class="fa-solid fa-check"></i>
                 </div>
+                
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">
+                    Շնորհակալություն թեստն անցնելու համար:
+                </h2>
+                
+                <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                    Ձեր պատասխաններն հաջողությամբ գրանցվել են FYM Hospitality Group-ի HR բաժնի կողմից։ Մենք կապ կհաստատենք Ձեզ հետ հետագա փուլերի վերաբերյալ։
+                </p>
 
-                <!-- DETAILED SCORE BREAKDOWN -->
-                <div id="resultsBreakdownContainer" class="space-y-5">
-                    <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center">
-                        <i class="fa-solid fa-chart-pie text-slate-700 mr-2"></i>
-                        Ձեր Արդյունքների Վերլուծությունը
-                    </h3>
-
-                    <!-- Dynamic Score Cards -->
-                    <div id="categoryScoresGrid" class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 text-center">
-                        <!-- Populated by JS -->
-                    </div>
-
-                    <!-- Dominant Style Analysis Card -->
-                    <div id="dominantStyleCard" class="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-3">
-                        <!-- Populated by JS -->
-                    </div>
-                </div>
-
-                <div class="pt-3 border-t border-slate-100 text-center">
-                    <p class="text-[11px] text-slate-400">Կարող եք փակել այս պատուհանը։</p>
+                <div class="pt-4 border-t border-slate-100">
+                    <p class="text-xs text-slate-400">Կարող եք փակել այս պատուհանը։</p>
                 </div>
             </div>
         </section>
 
         <!-- 4. HR / ADMIN PORTAL SECTION -->
-        <section id="adminDashboard" class="hidden space-y-6 max-w-5xl mx-auto w-full">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
+        <section id="adminDashboard" class="hidden space-y-8">
+            <!-- Admin Title & Controls Header -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
                 <div>
-                    <h2 class="text-xl font-bold text-slate-900 flex items-center">
-                        <i class="fa-solid fa-user-shield text-slate-700 mr-2.5"></i>
+                    <h2 class="text-2xl font-bold text-slate-900 flex items-center">
+                        <i class="fa-solid fa-user-shield text-slate-700 mr-3"></i>
                         HR Վերլուծական Կառավարման Վահանակ
                     </h2>
-                    <p class="text-[11px] text-slate-500 mt-0.5">FYM Hospitality Group — Թեստավորման Արդյունքներ (Պահպանվում են 5 տարի)</p>
+                    <p class="text-xs text-slate-500 mt-1">FYM Hospitality Group — Թեստավորման Արդյունքներ և Անվտանգություն</p>
                 </div>
                 
-                <div class="flex items-center space-x-2.5">
-                    <button onclick="openPinSettingsModal()" class="px-3 py-1.5 text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 rounded-xl border border-slate-300 transition flex items-center">
-                        <i class="fa-solid fa-key mr-1.5 text-slate-500"></i>
+                <div class="flex items-center space-x-3">
+                    <button onclick="openPinSettingsModal()" class="px-4 py-2 text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 rounded-xl border border-slate-300 transition flex items-center">
+                        <i class="fa-solid fa-key mr-2 text-slate-500"></i>
                         Փոխել PIN-ը
                     </button>
-                    <button onclick="logoutAdmin()" class="px-3 py-1.5 text-xs font-semibold bg-rose-50 text-rose-700 hover:bg-rose-100 rounded-xl border border-rose-200 transition flex items-center">
-                        <i class="fa-solid fa-arrow-right-from-bracket mr-1.5"></i>
+                    <button onclick="logoutAdmin()" class="px-4 py-2 text-xs font-semibold bg-rose-50 text-rose-700 hover:bg-rose-100 rounded-xl border border-rose-200 transition flex items-center">
+                        <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i>
                         Դուրս Գալ
                     </button>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="glass-card p-4 rounded-2xl custom-shadow">
-                    <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Ընդհանուր Դիմորդներ</span>
-                    <div id="statTotalCandidates" class="text-2xl font-extrabold text-slate-900 mt-1">0</div>
+            <!-- Stats Overview Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                <div class="glass-card p-5 rounded-2xl custom-shadow">
+                    <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Ընդհանուր Դիմորդներ</span>
+                    <div id="statTotalCandidates" class="text-3xl font-extrabold text-slate-900 mt-2">0</div>
                 </div>
-                <div class="glass-card p-4 rounded-2xl custom-shadow">
-                    <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Միջին Տևողությունը</span>
-                    <div id="statAvgDuration" class="text-2xl font-extrabold text-slate-900 mt-1">0:00</div>
+                <div class="glass-card p-5 rounded-2xl custom-shadow">
+                    <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Միջին Տևողությունը</span>
+                    <div id="statAvgDuration" class="text-3xl font-extrabold text-slate-900 mt-2">0:00</div>
                 </div>
-                <div class="glass-card p-4 rounded-2xl custom-shadow">
-                    <span class="text-[11px] font-semibold text-amber-600 uppercase tracking-wider">Անվտանգության Խախտումներ</span>
-                    <div id="statSecurityAlerts" class="text-2xl font-extrabold text-amber-600 mt-1">0</div>
+                <div class="glass-card p-5 rounded-2xl custom-shadow">
+                    <span class="text-xs font-semibold text-amber-600 uppercase tracking-wider">Անվտանգության Խախտումներ</span>
+                    <div id="statSecurityAlerts" class="text-3xl font-extrabold text-amber-600 mt-2">0</div>
                 </div>
             </div>
 
+            <!-- Candidates Results Table -->
             <div class="glass-card rounded-2xl custom-shadow overflow-hidden">
-                <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50/50">
-                    <h3 class="font-bold text-slate-900 text-sm">Անցկացված Թեստերի Պատմություն (5 տարվա արխիվ)</h3>
-                    <span class="text-[11px] text-slate-500 font-medium">Ավտոմատ մաքրում 5 տարի անց</span>
+                <div class="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50/50">
+                    <h3 class="font-bold text-slate-900 text-base">Անցկացված Թեստերի Պատմություն</h3>
+                    <span class="text-xs text-slate-500 font-medium">Տվյալները պահպանվում են տեղական համակարգում</span>
                 </div>
 
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs text-slate-700">
-                        <thead class="bg-slate-100/70 text-slate-900 uppercase text-[10px] font-bold tracking-wider border-b border-slate-200">
+                    <table class="w-full text-left text-sm text-slate-700">
+                        <thead class="bg-slate-100/70 text-slate-900 uppercase text-[11px] font-bold tracking-wider border-b border-slate-200">
                             <tr>
-                                <th class="py-3 px-3.5">Ամսաթիվ / Ժամ</th>
-                                <th class="py-3 px-3.5">Անուն Ազգանուն</th>
-                                <th class="py-3 px-3.5">Պաշտոն</th>
-                                <th class="py-3 px-3.5">Տևողություն</th>
-                                <th class="py-3 px-3.5 text-center">Մրցակցություն</th>
-                                <th class="py-3 px-3.5 text-center">Համագործակցություն</th>
-                                <th class="py-3 px-3.5 text-center">Փոխզիջում</th>
-                                <th class="py-3 px-3.5 text-center">Խուսափում</th>
-                                <th class="py-3 px-3.5 text-center">Հարմարվողականություն</th>
-                                <th class="py-3 px-3.5">Անվտանգության Լոգ</th>
+                                <th class="py-3.5 px-4">Ամսաթիվ / Ժամ</th>
+                                <th class="py-3.5 px-4">Անուն Ազգանուն</th>
+                                <th class="py-3.5 px-4">Պաշտոն</th>
+                                <th class="py-3.5 px-4">Տևողություն</th>
+                                <th class="py-3.5 px-4 text-center">Մրցակցություն (Competing)</th>
+                                <th class="py-3.5 px-4 text-center">Համագործակցություն (Collaborating)</th>
+                                <th class="py-3.5 px-4 text-center">Փոխզիջում (Compromising)</th>
+                                <th class="py-3.5 px-4 text-center">Խուսափում (Avoiding)</th>
+                                <th class="py-3.5 px-4 text-center">Հարմարվողականություն (Accommodating)</th>
+                                <th class="py-3.5 px-4">Անվտանգության Լոգ</th>
                             </tr>
                         </thead>
                         <tbody id="adminTableBody" class="divide-y divide-slate-200">
+                            <!-- Dynamic Content Rendered Here -->
                         </tbody>
                     </table>
                 </div>
@@ -302,30 +303,30 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="w-full bg-slate-50 border-t border-slate-200 py-3 text-center text-[11px] text-slate-500">
+    <footer class="w-full bg-slate-50 border-t border-slate-200 py-4 text-center text-xs text-slate-500">
         <p>&copy; <span id="yearSpan"></span> FYM Hospitality Group. Բոլոր իրավունքները պաշտպանված են։</p>
     </footer>
 
     <!-- MODAL 1: HR PIN PROMPT MODAL -->
     <div id="pinModal" class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-2xl p-5 space-y-4 custom-shadow border border-slate-200">
-            <div class="text-center space-y-1.5">
-                <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-800 flex items-center justify-center mx-auto text-base">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-6 space-y-5 custom-shadow border border-slate-200">
+            <div class="text-center space-y-2">
+                <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-800 flex items-center justify-center mx-auto text-xl">
                     <i class="fa-solid fa-lock"></i>
                 </div>
-                <h3 class="text-base font-bold text-slate-900">HR Admin Մուտք</h3>
-                <p class="text-[11px] text-slate-500">Մուտքագրեք ադմինիստրատորի PIN կոդը</p>
+                <h3 class="text-lg font-bold text-slate-900">HR Admin Մուտք</h3>
+                <p class="text-xs text-slate-500">Մուտքագրեք ադմինիստրատորի PIN կոդը</p>
             </div>
 
-            <form onsubmit="verifyAdminPin(event)" class="space-y-3">
+            <form onsubmit="verifyAdminPin(event)" class="space-y-4">
                 <input type="password" id="inputAdminPin" maxlength="8" placeholder="PIN" required
-                    class="w-full text-center text-xl tracking-widest px-3 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-slate-900 outline-none">
+                    class="w-full text-center text-2xl tracking-widest px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-slate-900 outline-none">
                 
-                <p id="pinError" class="text-[11px] text-rose-600 text-center hidden">Սխալ PIN կոդ։ Փորձեք նորից։</p>
+                <p id="pinError" class="text-xs text-rose-600 text-center hidden">Սխալ PIN կոդ։ Փորձեք նորից։</p>
 
-                <div class="flex space-x-2.5">
-                    <button type="button" onclick="closeAdminModal()" class="w-1/2 py-2 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-50 text-xs">Չեղարկել</button>
-                    <button type="submit" class="w-1/2 py-2 rounded-xl bg-slate-900 text-white font-medium hover:bg-slate-800 text-xs shadow">Մուտք</button>
+                <div class="flex space-x-3">
+                    <button type="button" onclick="closeAdminModal()" class="w-1/2 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-50 text-sm">Չեղարկել</button>
+                    <button type="submit" class="w-1/2 py-2.5 rounded-xl bg-slate-900 text-white font-medium hover:bg-slate-800 text-sm shadow">Մուտք</button>
                 </div>
             </form>
         </div>
@@ -333,22 +334,22 @@
 
     <!-- MODAL 2: CHANGE ADMIN PIN MODAL -->
     <div id="changePinModal" class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-2xl p-5 space-y-4 custom-shadow border border-slate-200">
-            <div class="text-center space-y-1">
-                <h3 class="text-base font-bold text-slate-900">Փոխել Admin PIN-ը</h3>
-                <p class="text-[11px] text-slate-500">Սահմանեք նոր թվային PIN կոդ</p>
+        <div class="bg-white w-full max-w-sm rounded-2xl p-6 space-y-5 custom-shadow border border-slate-200">
+            <div class="text-center space-y-2">
+                <h3 class="text-lg font-bold text-slate-900">Փոխել Admin PIN-ը</h3>
+                <p class="text-xs text-slate-500">Սահմանեք նոր թվային PIN կոդ</p>
             </div>
 
-            <form onsubmit="saveNewPin(event)" class="space-y-3">
+            <form onsubmit="saveNewPin(event)" class="space-y-4">
                 <div>
-                    <label class="block text-[11px] font-semibold text-slate-600 uppercase mb-1">Նոր PIN</label>
+                    <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Նոր PIN</label>
                     <input type="password" id="newPinInput" required maxlength="8" placeholder="Նոր PIN" 
-                        class="w-full text-center text-lg tracking-widest px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-slate-900 outline-none">
+                        class="w-full text-center text-xl tracking-widest px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-slate-900 outline-none">
                 </div>
 
-                <div class="flex space-x-2.5">
-                    <button type="button" onclick="closePinSettingsModal()" class="w-1/2 py-2 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-50 text-xs">Չեղարկել</button>
-                    <button type="submit" class="w-1/2 py-2 rounded-xl bg-slate-900 text-white font-medium hover:bg-slate-800 text-xs shadow">Պահպանել</button>
+                <div class="flex space-x-3">
+                    <button type="button" onclick="closePinSettingsModal()" class="w-1/2 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-50 text-sm">Չեղարկել</button>
+                    <button type="submit" class="w-1/2 py-2.5 rounded-xl bg-slate-900 text-white font-medium hover:bg-slate-800 text-sm shadow">Պահպանել</button>
                 </div>
             </form>
         </div>
@@ -356,174 +357,188 @@
 
     <!-- APPLICATION SCRIPT & LOGIC -->
     <script>
+        // Set dynamic current year in footer
         document.getElementById('yearSpan').textContent = new Date().getFullYear();
 
-        // CONFLICT MODE DESCRIPTIONS & ANALYSIS DATA
-        const modeDescriptions = {
-            Competing: {
-                title: "Մրցակցություն (Competing)",
-                description: "Հաստատակամ և ոչ փոխզիջումային ոճ։ Անձը ձգտում է հասնել իր նպատակներին սեփական դիրքորոշումը պաշտպանելու միջոցով։",
-                strengths: [
-                    "Արագ և վճռական որոշումների կայացում ճգնաժամային իրավիճակներում",
-                    "Ընկերության հիմնական շահերի և չափանիշների պաշտպանություն",
-                    "Հստակ առաջնորդություն և պատասխանատվության ստանձնում"
-                ],
-                weaknesses: [
-                    "Կարող է ճնշել թիմակիցների նախաձեռնությունները",
-                    "Ռիսկ է ստեղծում միջանձնային հարաբերությունների վատթարացման համար",
-                    "Կարող է հանգեցնել թիմային լարվածության"
-                ]
-            },
-            Collaborating: {
-                title: "Համագործակցություն (Collaborating)",
-                description: "Փնտրում է «win-win» լուծումներ, որոնք լիովին բավարարում են բոլոր կողմերի մտահոգություններն ու շահերը։",
-                strengths: [
-                    "Բարձր վստահության և երկարաժամկետ թիմային հարաբերությունների կառուցում",
-                    "Բազմակողմանի և նորարարական լուծումների գտնում",
-                    "Խնդիրների արմատական լուծում"
-                ],
-                weaknesses: [
-                    "Պահանջում է մեծ ժամանակ և հուզական resursներ",
-                    "Կարող է դանդաղեցնել հրատապ որոշումները",
-                    "Ոչ էական հարցերի չափազանց բարդացում"
-                ]
-            },
-            Compromising: {
-                title: "Փոխզիջում (Compromising)",
-                description: "Ձգտում է գտնել միջանկյալ լուծումներ, որտեղ երկու կողմերն էլ անում են որոշակի զիջումներ։",
-                strengths: [
-                    "Փակուղային իրավիճակների արագ լուծում",
-                    "Ժամանակավոր համաձայնությունների ձեռքբերում բարդ հարցերում",
-                    "Աշխատանքային հարաբերությունների պահպանում"
-                ],
-                weaknesses: [
-                    "Կարող է հանգեցնել ոչ լիարժեք (միջակ) լուծումների",
-                    "Չի վերացնում խնդրի հիմնական պատճառները",
-                    "Երկու կողմերն էլ կարող են մասնակի դժգոհ մնալ"
-                ]
-            },
-            Avoiding: {
-                title: "Խուսափում (Avoiding)",
-                description: "Հետաձգում կամ շրջանցում է կոնֆլիկտները՝ անմիջական լարվածությունից խուսափելու նպատակով։",
-                strengths: [
-                    "Բորբոքված կոնֆլիկտների սրացման կանխում",
-                    "Ժամանակի խնայողություն երկրորդական հարցերում",
-                    "Լրացուցիչ տեղեկատվություն հավաքելու հնարավորություն"
-                ],
-                weaknesses: [
-                    "Կարևոր խնդիրները մնում են չլուծված",
-                    "Կարող է ընկալվել որպես պասիվություն կամ անհետևողականություն",
-                    "Ազդեցության նվազում թիմում"
-                ]
-            },
-            Accommodating: {
-                title: "Հարմարվողականություն (Accommodating)",
-                description: "Զիջում է սեփական շահերը հանուն դիմացինի ցանկությունների և թիմային ներդաշնակության։",
-                strengths: [
-                    "Դրական աշխատանքային մթնոլորտի պահպանում",
-                    "Բարիդրացիական հարաբերությունների կառուցում",
-                    "Արդյունավետ է, երբ հարցը դիմացինի համար շատ ավելի կարևոր է"
-                ],
-                weaknesses: [
-                    "Սեփական արժեքավոր գաղափարները կարող են անտեսվել",
-                    "Մշտապես զիջելու պատճառով հուզական հոգնածության ռիսկ",
-                    "Հեղինակության նվազում կարևոր քննարկումներում"
-                ]
-            }
-        };
-
+        /* ==========================================================================
+           1. QUESTION BANK DATA (30 ARMENIAN TKI CONFLICT QUESTIONS)
+           Map structure: 
+           Each question contains Statement A & B + their corresponding conflict category:
+           Categories: 
+           - 'Competing' (Մրցակցություն)
+           - 'Collaborating' (Համագործակցություն)
+           - 'Compromising' (Փոխզիջում)
+           - 'Avoiding' (Խուսափում)
+           - 'Accommodating' (Հարմարվողականություն)
+           ========================================================================== */
         const questionsData = [
-            { A: { text: "Երբեմն ես թույլ եմ տալիս, որ ուրիշներն իրենց վրա վերցնեն խնդրի լուծման պատասխանատվությունը։", mode: "Avoiding" }, B: { text: "Տարաձայնությունների շուրջ բանակցելու փոխարեն՝ ես փորձում եմ շեշտադրել այն հարցերը, որոնց շուրջ մենք համակարծիք ենք։", mode: "Accommodating" } },
-            { A: { text: "Ես փորձում եմ գտնել փոխզիջումային լուծում։", mode: "Compromising" }, B: { text: "Ես փորձում եմ հաշվի առնել թե՛ դիմացինի, թե՛ իմ բոլոր մտահոգություններն ու շահերը։", mode: "Collaborating" } },
-            { A: { text: "Ես սովորաբար հաստատակամորեն հետամուտ եմ լինում իմ նպատակներին։", mode: "Competing" }, B: { text: "Երբեմն փորձում եմ մեղմել դիմացինի բացասական զգացմունքները և պահպանել մեր հարաբերությունները։", mode: "Accommodating" } },
-            { A: { text: "Ես փորձում եմ գտնել փոխզիջումային լուծում։", mode: "Compromising" }, B: { text: "Երբեմն իմ ցանկությունները զիջում եմ դիմացինի ցանկություններին։", mode: "Accommodating" } },
-            { A: { text: "Ես մշտապես դիմում եմ դիմացինին՝ խնդրի լուծման տարբերակ գտնելու հարցում նրա օգնությունը ստանալու համար։", mode: "Collaborating" }, B: { text: "Ես փորձում եմ անել անհրաժեշտ ամեն ինչ՝ անիմաստ լարվածությունից խուսափելու համար։", mode: "Avoiding" } },
-            { A: { text: "Ես փորձում եմ խուսափել այնպիսի իրավիճակներից, որոնք կարող են ինձ համար տհաճություն ստեղծել։", mode: "Avoiding" }, B: { text: "Ես փորձում եմ հասնել նրան, որ իմ դիրքորոշումը հաղթի։", mode: "Competing" } },
-            { A: { text: "Ես փորձում եմ հետաձգել հարցի քննարկումը, մինչև որոշ ժամանակ ունենամ այն մտածելու համար։", mode: "Avoiding" }, B: { text: "Որոշ հարցերում զիջում եմ՝ փոխարենը մյուս հարցերում զիջումներ ստանալու համար։", mode: "Compromising" } },
-            { A: { text: "Ես սովորաբար հաստատակամորեն հետամուտ եմ լինում իմ նպատակներին։", mode: "Competing" }, B: { text: "Ես փորձում եմ անմիջապես բաց քննարկման դնել բոլոր մտահոգություններն ու խնդիրները։", mode: "Collaborating" } },
-            { A: { text: "Կարծում եմ՝ տարաձայնությունները միշտ չէ, որ արժե մտահոգիչ համարել։", mode: "Avoiding" }, B: { text: "Ես որոշակի ջանքեր եմ գործադրում իմ ուզածին հասնելու համար։", mode: "Competing" } },
-            { A: { text: "Ես հաստատակամորեն հետամուտ եմ լինում իմ նպատակներին։", mode: "Competing" }, B: { text: "Ես փորձում եմ գտնել փոխզիջումային լուծում։", mode: "Compromising" } },
-            { A: { text: "Ես փորձում եմ անմիջապես բաց քննարկման դնել բոլոր մտահոգություններն ու խնդիրները։", mode: "Collaborating" }, B: { text: "Երբեմն փորձում եմ մեղմել դիմացինի բացասական զգացմունքները և պահպանել մեր հարաբերությունները։", mode: "Accommodating" } },
-            { A: { text: "Երբեմն խուսափում եմ այնպիսի դիրքորոշում արտահայտելուց, որը կարող է տարաձայնություններ առաջացնել։", mode: "Avoiding" }, B: { text: "Ես պատրաստ եմ որոշ հարցերում զիջել դիմացինին, եթե նա էլ իր հերթին որոշ հարցերում զիջի ինձ։", mode: "Compromising" } },
-            { A: { text: "Ես առաջարկում եմ միջանկյալ լուծում, որը հաշվի է առնում երկու կողմերի դիրքորոշումները։", mode: "Compromising" }, B: { text: "Ես պնդում եմ, որ իմ տեսակետը նույնպես հաշվի առնվի։", mode: "Competing" } },
-            { A: { text: "Ես ներկայացնում եմ դիմացինին իմ գաղափարները և հարցնում նրա կարծիքը։", mode: "Collaborating" }, B: { text: "Ես փորձում եմ ներկայացնել իմ դիրքորոշման տրամաբանությունն ու առավելությունները։", mode: "Competing" } },
-            { A: { text: "Երբեմն փորձում եմ մեղմել դիմացինի բացասական զգացմունքները և պահպանել մեր հարաբերությունները։", mode: "Accommodating" }, B: { text: "Ես փորձում եմ անել անհրաժեշտ ամեն ինչ՝ անիմաստ լարվածությունից խուսափելու համար։", mode: "Avoiding" } },
-            { A: { text: "Ես փորձում եմ չվիրավորել դիմացինի զգացմունքները։", mode: "Accommodating" }, B: { text: "Ես փորձում եմ համոզել դիմացինին իմ դիրքորոշման առավելություններում։", mode: "Competing" } },
-            { A: { text: "Ես սովորաբար հաստատակամորեն հետամուտ եմ լինում իմ նպատակներին։", mode: "Competing" }, B: { text: "Ես փորձում եմ անել անհրաժեշտ ամեն ինչ՝ անիմաստ լարվածությունից խուսափելու համար։", mode: "Avoiding" } },
-            { A: { text: "Եթե դա կուրախացնի դիմացինին, ես կարող եմ թույլ տալ, որ նա մնա իր տեսակետին։", mode: "Accommodating" }, B: { text: "Ես պատրաստ եմ որոշ հարցերում զիջել դիմացինին, եթե նա էլ իր հերթին որոշ հարցերում զիջի ինձ։", mode: "Compromising" } },
-            { A: { text: "Ես փորձում եմ անմիջապես բաց քննարկման դնել բոլոր մտահոգություններն ու խնդիրները։", mode: "Collaborating" }, B: { text: "Ես փորձում եմ հետաձգել հարցի քննարկումը, մինչև որոշ ժամանակ ունենամ այն վերանայելու և մտածելու համար։", mode: "Avoiding" } },
-            { A: { text: "Ես փորձում եմ անմիջապես քննարկել և լուծել մեր միջև առկա տարաձայնությունները։", mode: "Collaborating" }, B: { text: "Ես փորձում եմ գտնել արդարացի լուծում, որի դեպքում երկու կողմերն էլ և՛ զիջումներ են անում, և՛ որոշակի օգուտներ ստանում։", mode: "Compromising" } },
-            { A: { text: "Բանակցությունների ընթացքում փորձում եմ հաշվի առնել դիմացինի զգացմունքները։", mode: "Accommodating" }, B: { text: "Ես միշտ նախընտրում եմ խնդրի շուրջ անմիջական և բաց քննարկումը։", mode: "Collaborating" } },
-            { A: { text: "Ես փորձում եմ գտնել այնպիսի դիրքորոշում, որը միջանկյալ տարբերակ կլինի իմ և դիմացինի դիրքորոշումների միջև։", mode: "Compromising" }, B: { text: "Ես պնդում եմ իմ ցանկությունների իրականացումը։", mode: "Competing" } },
-            { A: { text: "Ինձ համար հաճախ կարևոր է, որ իմ բոլոր ցանկությունները բավարարվեն։", mode: "Competing" }, B: { text: "Երբեմն թույլ եմ տալիս, որ ուրիշներն իրենց վրա վերցնեն խնդիրների լուծման պատասխանատվությունը։", mode: "Avoiding" } },
-            { A: { text: "Եթե դիմացինի դիրքորոշումը նրա համար կարևոր է թվում, ես փորձում եմ հաշվի առնել և բավարարել նրա ցանկությունները։", mode: "Accommodating" }, B: { text: "Ես փորձում եմ հասնել նրան, որ դիմացինը համաձայնի փոխզիջումային լուծման։", mode: "Compromising" } },
-            { A: { text: "Ես փորձում եմ դիմացինին ներկայացնել իմ դիրքորոշման տրամաբանությունն ու առավելությունները։", mode: "Competing" }, B: { text: "Բանակցությունների ընթացքում փորձում եմ հաշվի առնել դիմացինի ցանկությունները։", mode: "Accommodating" } },
-            { A: { text: "Ես առաջարկում եմ միջանկյալ լուծում, որը հաշվի է առնում երկու կողմերի դիրքորոշումները։", mode: "Compromising" }, B: { text: "Ինձ համար գրեթե միշտ կարևոր է, որ իմ բոլոր ցանկությունները բավարարվեն։", mode: "Competing" } },
-            { A: { text: "Երբեմն խուսափում եմ այնպիսի դիրքորոշում արտահայտելուց, որը կարող է տարաձայնություններ առաջացնել։", mode: "Avoiding" }, B: { text: "Եթե դա կուրախացնի դիմացինին, ես կարող եմ թույլ տալ, որ նա մնա իր տեսակետին։", mode: "Accommodating" } },
-            { A: { text: "Ես սովորաբար հաստատակամորեն հետամուտ եմ լինում իմ նպատակներին։", mode: "Competing" }, B: { text: "Կարծում եմ՝ տարաձայնությունները միշտ չէ, որ արժե մտահոգիչ համարել։", mode: "Avoiding" } },
-            { A: { text: "Ես առաջարկում եմ միջանկյալ լուծում, որը հաշվի է առնում երկու կողմերի դիրքորոշումները։", mode: "Compromising" }, B: { text: "Կարծում եմ՝ տարաձայնությունները միշտ չէ, որ արժե մտահոգիչ համարել։", mode: "Avoiding" } },
-            { A: { text: "Ես փորձում եմ չվիրավորել դիմացինի զգացմունքները։", mode: "Accommodating" }, B: { text: "Ես միշտ դիմացինի հետ կիսում եմ խնդիրը, որպեսզի միասին գտնենք դրա լուծումը։", mode: "Collaborating" } }
+            {
+                A: { text: "Երբեմն ես թույլ եմ տալիս, որ ուրիշներն իրենց վրա վերցնեն խնդրի լուծման պատասխանատվությունը։", mode: "Avoiding" },
+                B: { text: "Տարաձայնությունների շուրջ բանակցելու փոխարեն՝ ես փորձում եմ շեշտադրել այն հարցերը, որոնց շուրջ մենք համակարծիք ենք։", mode: "Accommodating" }
+            },
+            {
+                A: { text: "Ես փորձում եմ գտնել փոխզիջումային լուծում։", mode: "Compromising" },
+                B: { text: "Ես փորձում եմ հաշվի առնել թե՛ դիմացինի, թե՛ իմ բոլոր մտահոգություններն ու շահերը։", mode: "Collaborating" }
+            },
+            {
+                A: { text: "Ես սովորաբար հաստատակամորեն հետամուտ եմ լինում իմ նպատակներին։", mode: "Competing" },
+                B: { text: "Երբեմն փորձում եմ մեղմել դիմացինի բացասական զգացմունքները և պահպանել մեր հարաբերությունները։", mode: "Accommodating" }
+            },
+            {
+                A: { text: "Ես փորձում եմ գտնել փոխզիջումային լուծում։", mode: "Compromising" },
+                B: { text: "Երբեմն իմ ցանկությունները զիջում եմ դիմացինի ցանկություններին։", mode: "Accommodating" }
+            },
+            {
+                A: { text: "Ես մշտապես դիմում եմ դիմացինին՝ խնդրի լուծման տարբերակ գտնելու հարցում նրա օգնությունը ստանալու համար։", mode: "Collaborating" },
+                B: { text: "Ես փորձում եմ անել անհրաժեշտ ամեն ինչ՝ անիմաստ լարվածությունից խուսափելու համար։", mode: "Avoiding" }
+            },
+            {
+                A: { text: "Ես փորձում եմ խուսափել այնպիսի իրավիճակներից, որոնք կարող են ինձ համար տհաճություն ստեղծել։", mode: "Avoiding" },
+                B: { text: "Ես փորձում եմ հասնել նրան, որ իմ դիրքորոշումը հաղթի։", mode: "Competing" }
+            },
+            {
+                A: { text: "Ես փորձում եմ հետաձգել հարցի քննարկումը, մինչև որոշ ժամանակ ունենամ այն մտածելու համար։", mode: "Avoiding" },
+                B: { text: "Որոշ հարցերում զիջում եմ՝ փոխարենը մյուս հարցերում զիջումներ ստանալու համար։", mode: "Compromising" }
+            },
+            {
+                A: { text: "Ես սովորաբար հաստատակամորեն հետամուտ եմ լինում իմ նպատակներին։", mode: "Competing" },
+                B: { text: "Ես փորձում եմ անմիջապես բաց քննարկման դնել բոլոր մտահոգություններն ու խնդիրները։", mode: "Collaborating" }
+            },
+            {
+                A: { text: "Կարծում եմ՝ տարաձայնությունները միշտ չէ, որ արժե մտահոգիչ համարել։", mode: "Avoiding" },
+                B: { text: "Ես որոշակի ջանքեր եմ գործադրում իմ ուզածին հասնելու համար։", mode: "Competing" }
+            },
+            {
+                A: { text: "Ես հաստատակամորեն հետամուտ եմ լինում իմ նպատակներին։", mode: "Competing" },
+                B: { text: "Ես փորձում եմ գտնել փոխզիջումային լուծում։", mode: "Compromising" }
+            },
+            {
+                A: { text: "Ես փորձում եմ անմիջապես բաց քննարկման դնել բոլոր մտահոգություններն ու խնդիրները։", mode: "Collaborating" },
+                B: { text: "Երբեմն փորձում եմ մեղմել դիմացինի բացասական զգացմունքները և պահպանել մեր հարաբերությունները։", mode: "Accommodating" }
+            },
+            {
+                A: { text: "Երբեմն խուսափում եմ այնպիսի դիրքորոշում արտահայտելուց, որը կարող է տարաձայնություններ առաջացնել։", mode: "Avoiding" },
+                B: { text: "Ես պատրաստ եմ որոշ հարցերում զիջել դիմացինին, եթե նա էլ իր հերթին որոշ հարցերում զիջի ինձ։", mode: "Compromising" }
+            },
+            {
+                A: { text: "Ես առաջարկում եմ միջանկյալ լուծում, որը հաշվի է առնում երկու կողմերի դիրքորոշումները։", mode: "Compromising" },
+                B: { text: "Ես պնդում եմ, որ իմ տեսակետը նույնպես հաշվի առնվի։", mode: "Competing" }
+            },
+            {
+                A: { text: "Ես ներկայացնում եմ դիմացինին իմ գաղափարները և հարցնում նրա կարծիքը։", mode: "Collaborating" },
+                B: { text: "Ես փորձում եմ ներկայացնել իմ դիրքորոշման տրամաբանությունն ու առավելությունները։", mode: "Competing" }
+            },
+            {
+                A: { text: "Երբեմն փորձում եմ մեղմել դիմացինի բացասական զգացմունքները և պահպանել մեր հարաբերությունները։", mode: "Accommodating" },
+                B: { text: "Ես փորձում եմ անել անհրաժեշտ ամեն ինչ՝ անիմաստ լարվածությունից խուսափելու համար։", mode: "Avoiding" }
+            },
+            {
+                A: { text: "Ես փորձում եմ չվիրավորել դիմացինի զգացմունքները։", mode: "Accommodating" },
+                B: { text: "Ես փորձում եմ համոզել դիմացինին իմ դիրքորոշման առավելություններում։", mode: "Competing" }
+            },
+            {
+                A: { text: "Ես սովորաբար հաստատակամորեն հետամուտ եմ լինում իմ նպատակներին։", mode: "Competing" },
+                B: { text: "Ես փորձում եմ անել անհրաժեշտ ամեն ինչ՝ անիմաստ լարվածությունից խուսափելու համար։", mode: "Avoiding" }
+            },
+            {
+                A: { text: "Եթե դա կուրախացնի դիմացինին, ես կարող եմ թույլ տալ, որ նա մնա իր տեսակետին։", mode: "Accommodating" },
+                B: { text: "Ես պատրաստ եմ որոշ հարցերում զիջել դիմացինին, եթե նա էլ իր հերթին որոշ հարցերում զիջի ինձ։", mode: "Compromising" }
+            },
+            {
+                A: { text: "Ես փորձում եմ անմիջապես բաց քննարկման դնել բոլոր մտահոգություններն ու խնդիրները։", mode: "Collaborating" },
+                B: { text: "Ես փորձում եմ հետաձգել հարցի քննարկումը, մինչև որոշ ժամանակ ունենամ այն վերանայելու և մտածելու համար։", mode: "Avoiding" }
+            },
+            {
+                A: { text: "Ես փորձում եմ անմիջապես քննարկել և լուծել մեր միջև առկա տարաձայնությունները։", mode: "Collaborating" },
+                B: { text: "Ես փորձում եմ գտնել արդարացի լուծում, որի դեպքում երկու կողմերն էլ և՛ զիջումներ են անում, և՛ որոշակի օգուտներ ստանում։", mode: "Compromising" }
+            },
+            {
+                A: { text: "Բանակցությունների ընթացքում փորձում եմ հաշվի առնել դիմացինի զգացմունքները։", mode: "Accommodating" },
+                B: { text: "Ես միշտ նախընտրում եմ խնդրի շուրջ անմիջական և բաց քննարկումը։", mode: "Collaborating" }
+            },
+            {
+                A: { text: "Ես փորձում եմ գտնել այնպիսի դիրքորոշում, որը միջանկյալ տարբերակ կլինի իմ և դիմացինի դիրքորոշումների միջև։", mode: "Compromising" },
+                B: { text: "Ես պնդում եմ իմ ցանկությունների իրականացումը։", mode: "Competing" }
+            },
+            {
+                A: { text: "Ինձ համար հաճախ կարևոր է, որ իմ բոլոր ցանկությունները բավարարվեն։", mode: "Competing" },
+                B: { text: "Երբեմն թույլ եմ տալիս, որ ուրիշներն իրենց վրա վերցնեն խնդիրների լուծման պատասխանատվությունը։", mode: "Avoiding" }
+            },
+            {
+                A: { text: "Եթե դիմացինի դիրքորոշումը նրա համար կարևոր է թվում, ես փորձում եմ հաշվի առնել և բավարարել նրա ցանկությունները։", mode: "Accommodating" },
+                B: { text: "Ես փորձում եմ հասնել նրան, որ դիմացինը համաձայնի փոխզիջումային լուծման։", mode: "Compromising" }
+            },
+            {
+                A: { text: "Ես փորձում եմ դիմացինին ներկայացնել իմ դիրքորոշման տրամաբանությունն ու առավելությունները։", mode: "Competing" },
+                B: { text: "Բանակցությունների ընթացքում փորձում եմ հաշվի առնել դիմացինի ցանկությունները։", mode: "Accommodating" }
+            },
+            {
+                A: { text: "Ես առաջարկում եմ միջանկյալ լուծում, որը հաշվի է առնում երկու կողմերի դիրքորոշումները։", mode: "Compromising" },
+                B: { text: "Ինձ համար գրեթե միշտ կարևոր է, որ իմ բոլոր ցանկությունները բավարարվեն։", mode: "Competing" }
+            },
+            {
+                A: { text: "Երբեմն խուսափում եմ այնպիսի դիրքորոշում արտահայտելուց, որը կարող է տարաձայնություններ առաջացնել։", mode: "Avoiding" },
+                B: { text: "Եթե դա կուրախացնի դիմացինին, ես կարող եմ թույլ տալ, որ նա մնա իր տեսակետին։", mode: "Accommodating" }
+            },
+            {
+                A: { text: "Ես սովորաբար հաստատակամորեն հետամուտ եմ լինում իմ նպատակներին։", mode: "Competing" },
+                B: { text: "Կարծում եմ՝ տարաձայնությունները միշտ չէ, որ արժե մտահոգիչ համարել։", mode: "Avoiding" }
+            },
+            {
+                A: { text: "Ես առաջարկում եմ միջանկյալ լուծում, որը հաշվի է առնում երկու կողմերի դիրքորոշումները։", mode: "Compromising" },
+                B: { text: "Կարծում եմ՝ տարաձայնությունները միշտ չէ, որ արժե մտահոգիչ համարել։", mode: "Avoiding" }
+            },
+            {
+                A: { text: "Ես փորձում եմ չվիրավորել դիմացինի զգացմունքները։", mode: "Accommodating" },
+                B: { text: "Ես միշտ դիմացինի հետ կիսում եմ խնդիրը, որպեսզի միասին գտնենք դրա լուծումը։", mode: "Collaborating" }
+            }
         ];
 
+        /* ==========================================================================
+           2. STATE MANAGEMENT & SYSTEM VARIABLES
+           ========================================================================== */
         let currentCandidate = {
-            firstName: '', lastName: '', position: '', startTime: null, endTime: null, durationSeconds: 0, answers: {},
-            security: { tabSwitches: 0, totalTimeAwaySeconds: 0, copyAttempts: 0 }
+            firstName: '',
+            lastName: '',
+            position: '',
+            startTime: null,
+            endTime: null,
+            durationSeconds: 0,
+            answers: {}, // index: 'A' or 'B'
+            security: {
+                tabSwitches: 0,
+                totalTimeAwaySeconds: 0,
+                copyAttempts: 0
+            }
         };
 
         let currentQuestionIndex = 0;
         let timerInterval = null;
-        let remainingSeconds = 600;
+        let remainingSeconds = 600; // 10 Minutes Total
         let tabAwayStartTime = null;
 
+        // Admin Security Pin (Stored in localStorage or default to 1234)
         function getAdminPin() {
             return localStorage.getItem('fym_admin_pin') || '1234';
         }
 
-        // RETENTION POLICY: Keep records up to 5 years (1825 days)
-        function getCandidatesHistory() {
-            const raw = localStorage.getItem('fym_candidates_history');
-            if (!raw) return [];
-            let history = JSON.parse(raw);
-            
-            const fiveYearsAgo = new Date();
-            fiveYearsAgo.setDate(fiveYearsAgo.getDate() - 1825);
-
-            // Filter out entries older than 5 years
-            const filteredHistory = history.filter(c => {
-                const cDate = new Date(c.startTime || Date.now());
-                return cDate >= fiveYearsAgo;
-            });
-
-            if (filteredHistory.length !== history.length) {
-                localStorage.setItem('fym_candidates_history', JSON.stringify(filteredHistory));
-            }
-
-            return filteredHistory;
+        // Candidates Log Storage
+        function getCandidateLogs() {
+            return JSON.parse(localStorage.getItem('fym_assessment_logs') || '[]');
         }
 
-        // ANTI-CHEAT ENGINE (Runs silently without visual alerts to candidates)
-        document.addEventListener("visibilitychange", function() {
-            if (document.hidden) {
-                tabAwayStartTime = new Date();
-                currentCandidate.security.tabSwitches++;
-            } else if (tabAwayStartTime) {
-                let awayDuration = Math.round((new Date() - tabAwayStartTime) / 1000);
-                currentCandidate.security.totalTimeAwaySeconds += awayDuration;
-                tabAwayStartTime = null;
-            }
-        });
+        function saveCandidateLog(logData) {
+            const logs = getCandidateLogs();
+            logs.unshift(logData);
+            localStorage.setItem('fym_assessment_logs', JSON.stringify(logs));
+        }
 
-        document.addEventListener('copy', (e) => {
-            e.preventDefault();
-            currentCandidate.security.copyAttempts++;
-        });
+        /* ==========================================================================
+           3. CANDIDATE TEST FLOW
+           ========================================================================== */
+        function startAssessment(event) {
+            event.preventDefault();
 
-        document.addEventListener('paste', (e) => {
-            e.preventDefault();
-        });
-
-        function startAssessment(e) {
-            e.preventDefault();
             const fn = document.getElementById('firstName').value.trim();
             const ln = document.getElementById('lastName').value.trim();
             const pos = document.getElementById('position').value.trim();
@@ -537,97 +552,100 @@
             currentCandidate.answers = {};
             currentCandidate.security = { tabSwitches: 0, totalTimeAwaySeconds: 0, copyAttempts: 0 };
 
+            // Switch UI Views
             document.getElementById('landingPage').classList.add('hidden');
             document.getElementById('testPage').classList.remove('hidden');
             document.getElementById('timerContainer').classList.remove('hidden');
             document.getElementById('timerContainer').classList.add('flex');
 
+            // Render First Question
             currentQuestionIndex = 0;
             renderQuestion();
+
+            // Start 10-Min Timer
             startTimer();
-        }
 
-        function startTimer() {
-            remainingSeconds = 600;
-            clearInterval(timerInterval);
-            timerInterval = setInterval(() => {
-                remainingSeconds--;
-                let m = Math.floor(remainingSeconds / 60);
-                let s = remainingSeconds % 60;
-                document.getElementById('timerDisplay').textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-
-                if (remainingSeconds <= 0) {
-                    clearInterval(timerInterval);
-                    finishAssessment(true);
-                }
-            }, 1000);
+            // Enable Security Monitoring
+            setupSecurityListeners();
         }
 
         function renderQuestion() {
             const q = questionsData[currentQuestionIndex];
-            document.getElementById('questionCounter').textContent = `Հարց ${currentQuestionIndex + 1} / 30`;
-            document.getElementById('progressBar').style.width = `${((currentQuestionIndex + 1) / 30) * 100}%`;
+            
+            // Progress indicators
+            document.getElementById('questionCounter').textContent = `Հարց ${currentQuestionIndex + 1} / ${questionsData.length}`;
+            const pct = ((currentQuestionIndex + 1) / questionsData.length) * 100;
+            document.getElementById('progressBar').style.width = `${pct}%`;
+
+            // Populate options text
             document.getElementById('textOptionA').textContent = q.A.text;
             document.getElementById('textOptionB').textContent = q.B.text;
 
-            const existingAns = currentCandidate.answers[currentQuestionIndex];
-            document.querySelectorAll('input[name="currentQuestion"]').forEach(radio => {
-                radio.checked = (radio.value === existingAns);
+            // Reset/Set Radio Selection state
+            const radios = document.getElementsByName('currentQuestion');
+            const selectedVal = currentCandidate.answers[currentQuestionIndex];
+
+            radios.forEach(r => {
+                if (selectedVal && r.value === selectedVal) {
+                    r.checked = true;
+                } else {
+                    r.checked = false;
+                }
             });
 
-            updateOptionStyling();
+            updateOptionStyles(selectedVal);
 
+            // Button controls state
             const btnPrev = document.getElementById('btnPrev');
             if (currentQuestionIndex === 0) {
-                btnPrev.classList.add('opacity-40', 'pointer-events-none');
+                btnPrev.classList.add('opacity-50', 'pointer-events-none');
             } else {
-                btnPrev.classList.remove('opacity-40', 'pointer-events-none');
+                btnPrev.classList.remove('opacity-50', 'pointer-events-none');
             }
 
             const btnNextText = document.getElementById('btnNextText');
+            const btnNextIcon = document.getElementById('btnNextIcon');
             if (currentQuestionIndex === questionsData.length - 1) {
-                btnNextText.textContent = "Ավարտել Թեստը";
+                btnNextText.textContent = "Ավարտել";
+                btnNextIcon.className = "fa-solid fa-check text-xs";
             } else {
                 btnNextText.textContent = "Հաջորդ";
+                btnNextIcon.className = "fa-solid fa-chevron-right text-xs";
             }
         }
 
         function selectOption(val) {
-            document.querySelector(`input[name="currentQuestion"][value="${val}"]`).checked = true;
             currentCandidate.answers[currentQuestionIndex] = val;
-            updateOptionStyling();
+            const radios = document.getElementsByName('currentQuestion');
+            radios.forEach(r => {
+                if (r.value === val) r.checked = true;
+            });
+            updateOptionStyles(val);
         }
 
-        function updateOptionStyling() {
-            const val = currentCandidate.answers[currentQuestionIndex];
-            const boxA = document.getElementById('labelOptionA');
-            const boxB = document.getElementById('labelOptionB');
+        function updateOptionStyles(selectedVal) {
+            const labelA = document.getElementById('labelOptionA');
+            const labelB = document.getElementById('labelOptionB');
 
-            if (val === 'A') {
-                boxA.classList.add('border-slate-900', 'bg-slate-50/50');
-                boxB.classList.remove('border-slate-900', 'bg-slate-50/50');
-            } else if (val === 'B') {
-                boxB.classList.add('border-slate-900', 'bg-slate-50/50');
-                boxA.classList.remove('border-slate-900', 'bg-slate-50/50');
-            } else {
-                boxA.classList.remove('border-slate-900', 'bg-slate-50/50');
-                boxB.classList.remove('border-slate-900', 'bg-slate-50/50');
-            }
+            labelA.className = "flex items-start p-5 rounded-xl border-2 cursor-pointer transition bg-white group " +
+                (selectedVal === 'A' ? "border-slate-900 bg-slate-50/50 shadow-sm" : "border-slate-200 hover:border-slate-400");
+            
+            labelB.className = "flex items-start p-5 rounded-xl border-2 cursor-pointer transition bg-white group " +
+                (selectedVal === 'B' ? "border-slate-900 bg-slate-50/50 shadow-sm" : "border-slate-200 hover:border-slate-400");
         }
 
         function nextQuestion() {
-            const selected = document.querySelector('input[name="currentQuestion"]:checked');
-            if (!selected) {
-                alert("Խնդրում ենք ընտրել տարբերակ (A կամ B) նախքան շարունակելը։");
+            // Validate selection
+            if (!currentCandidate.answers[currentQuestionIndex]) {
+                alert("Խնդրում ենք ընտրել տարբերակներից մեկը (A կամ B):");
                 return;
             }
-            currentCandidate.answers[currentQuestionIndex] = selected.value;
 
             if (currentQuestionIndex < questionsData.length - 1) {
                 currentQuestionIndex++;
                 renderQuestion();
             } else {
-                finishAssessment(false);
+                submitAssessment();
             }
         }
 
@@ -638,122 +656,168 @@
             }
         }
 
-        function finishAssessment(isTimeout) {
-            clearInterval(timerInterval);
-            currentCandidate.endTime = new Date();
-            currentCandidate.durationSeconds = Math.round((currentCandidate.endTime - currentCandidate.startTime) / 1000);
+        /* ==========================================================================
+           4. TIMER & ANTI-CHEAT ENGINE
+           ========================================================================== */
+        function startTimer() {
+            remainingSeconds = 600; // 10 minutes
+            updateTimerDisplay();
 
-            // TKI Scoring across 5 categories
-            let scores = { Competing: 0, Collaborating: 0, Compromising: 0, Avoiding: 0, Accommodating: 0 };
-            questionsData.forEach((q, idx) => {
-                const ans = currentCandidate.answers[idx];
-                if (ans === 'A') {
-                    scores[q.A.mode]++;
-                } else if (ans === 'B') {
-                    scores[q.B.mode]++;
+            timerInterval = setInterval(() => {
+                remainingSeconds--;
+                updateTimerDisplay();
+
+                if (remainingSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    alert("Հատկացված 10 րոպեն ավարտվեց: Թեստը ավտոմատ ուղարկվում է։");
+                    submitAssessment();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(remainingSeconds / 60);
+            const secs = remainingSeconds % 60;
+            document.getElementById('timerDisplay').textContent = 
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function setupSecurityListeners() {
+            // 1. Detect Window Blur / Tab Switching
+            window.addEventListener('blur', onWindowBlur);
+            window.addEventListener('focus', onWindowFocus);
+            
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    onWindowBlur();
+                } else {
+                    onWindowFocus();
                 }
             });
-            currentCandidate.scores = scores;
 
-            // Save candidate log to 5-year local storage
-            let history = getCandidatesHistory();
-            history.unshift(currentCandidate);
-            localStorage.setItem('fym_candidates_history', JSON.stringify(history));
+            // 2. Block & Record Copy/Paste attempts
+            document.addEventListener('copy', (e) => {
+                currentCandidate.security.copyAttempts++;
+                e.preventDefault();
+            });
+            document.addEventListener('paste', (e) => {
+                currentCandidate.security.copyAttempts++;
+                e.preventDefault();
+            });
+            document.addEventListener('contextmenu', (e) => {
+                e.preventDefault(); // Block right click
+            });
+        }
 
-            document.getElementById('testPage').classList.add('hidden');
-            document.getElementById('timerContainer').classList.remove('flex');
-            document.getElementById('timerContainer').classList.add('hidden');
-            
-            // Display candidate completion screen with points and explanations
-            renderCompletionBreakdown(scores);
-            document.getElementById('thankYouPage').classList.remove('hidden');
+        function removeSecurityListeners() {
+            window.removeEventListener('blur', onWindowBlur);
+            window.removeEventListener('focus', onWindowFocus);
+        }
 
-            if (isTimeout) {
-                alert("Ժամանակն սպառվել է։ Ձեր պատասխանները հաջողությամբ պահպանվեցին։");
+        function onWindowBlur() {
+            if (!tabAwayStartTime && document.getElementById('testPage').classList.contains('hidden') === false) {
+                tabAwayStartTime = new Date();
+                currentCandidate.security.tabSwitches++;
             }
         }
 
-        // Render points breakdown & strengths/weaknesses upon test completion
-        function renderCompletionBreakdown(scores) {
-            const grid = document.getElementById('categoryScoresGrid');
-            grid.innerHTML = '';
-
-            const modeNames = {
-                Competing: "Մրցակցություն",
-                Collaborating: "Համագործակցություն",
-                Compromising: "Փոխզիջում",
-                Avoiding: "Խուսափում",
-                Accommodating: "Հարմարվողականություն"
-            };
-
-            // Render category points grid
-            Object.keys(scores).forEach(key => {
-                const card = document.createElement('div');
-                card.className = "p-3 rounded-xl border border-slate-200 bg-white shadow-sm space-y-1";
-                card.innerHTML = `
-                    <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">${modeNames[key]}</div>
-                    <div class="text-xl font-extrabold text-slate-900">${scores[key]} <span class="text-xs font-normal text-slate-400">/ 12</span></div>
-                `;
-                grid.appendChild(card);
-            });
-
-            // Find dominant style
-            const topMode = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
-            const info = modeDescriptions[topMode];
-
-            const dominantCard = document.getElementById('dominantStyleCard');
-            dominantCard.innerHTML = `
-                <div class="flex items-center justify-between border-b border-slate-200 pb-3">
-                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Գերիշխող Ոճ</span>
-                    <span class="px-3 py-1 bg-slate-900 text-white text-xs font-bold rounded-full">${info.title} (${scores[topMode]} միավոր)</span>
-                </div>
-                <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">${info.description}</p>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                    <div class="space-y-2 bg-emerald-50/60 p-3 rounded-xl border border-emerald-100">
-                        <span class="text-xs font-bold text-emerald-800 flex items-center">
-                            <i class="fa-solid fa-circle-check text-emerald-600 mr-1.5"></i>
-                            Ուժեղ Կողմեր (Strengths)
-                        </span>
-                        <ul class="text-[11px] sm:text-xs text-slate-700 space-y-1">
-                            ${info.strengths.map(s => `<li class="flex items-start"><span class="mr-1 text-emerald-600">•</span> ${s}</li>`).join('')}
-                        </ul>
-                    </div>
-
-                    <div class="space-y-2 bg-rose-50/60 p-3 rounded-xl border border-rose-100">
-                        <span class="text-xs font-bold text-rose-800 flex items-center">
-                            <i class="fa-solid fa-circle-exclamation text-rose-600 mr-1.5"></i>
-                            Թույլ Կողմեր / Ռիսկեր (Weaknesses)
-                        </span>
-                        <ul class="text-[11px] sm:text-xs text-slate-700 space-y-1">
-                            ${info.weaknesses.map(w => `<li class="flex items-start"><span class="mr-1 text-rose-600">•</span> ${w}</li>`).join('')}
-                        </ul>
-                    </div>
-                </div>
-            `;
+        function onWindowFocus() {
+            if (tabAwayStartTime) {
+                const secondsAway = Math.round((new Date() - tabAwayStartTime) / 1000);
+                currentCandidate.security.totalTimeAwaySeconds += secondsAway;
+                tabAwayStartTime = null;
+            }
         }
 
-        // Admin Modal Controls
+        /* ==========================================================================
+           5. SCORING & SUBMISSION
+           ========================================================================== */
+        function submitAssessment() {
+            clearInterval(timerInterval);
+            removeSecurityListeners();
+
+            currentCandidate.endTime = new Date();
+            const totalDurationSec = Math.round((currentCandidate.endTime - currentCandidate.startTime) / 1000);
+            currentCandidate.durationSeconds = totalDurationSec;
+
+            // Calculate Mode Scores
+            const scores = {
+                Competing: 0,
+                Collaborating: 0,
+                Compromising: 0,
+                Avoiding: 0,
+                Accommodating: 0
+            };
+
+            // Loop through answered items and tally
+            Object.keys(currentCandidate.answers).forEach(qIdx => {
+                const choice = currentCandidate.answers[qIdx];
+                const mode = questionsData[qIdx][choice].mode;
+                if (scores[mode] !== undefined) {
+                    scores[mode]++;
+                }
+            });
+
+            // Format date timestamp
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('hy-AM') + ' ' + now.toLocaleTimeString('hy-AM', { hour: '2-digit', minute: '2-digit' });
+
+            // Prepare record for HR Admin
+            const candidateRecord = {
+                id: Date.now(),
+                date: dateStr,
+                firstName: currentCandidate.firstName,
+                lastName: currentCandidate.lastName,
+                position: currentCandidate.position,
+                durationSeconds: totalDurationSec,
+                scores: scores,
+                security: { ...currentCandidate.security }
+            };
+
+            // Save locally
+            saveCandidateLog(candidateRecord);
+
+            // Hide test UI, show clean Candidate Thank You Page (No scores shown to candidate)
+            document.getElementById('testPage').classList.add('hidden');
+            document.getElementById('timerContainer').classList.add('hidden');
+            document.getElementById('thankYouPage').classList.remove('hidden');
+        }
+
+        /* ==========================================================================
+           6. HR / ADMIN PORTAL LOGIC
+           ========================================================================== */
         function openAdminModal() {
-            document.getElementById('pinModal').classList.remove('hidden');
-            document.getElementById('inputAdminPin').value = '';
             document.getElementById('pinError').classList.add('hidden');
-            document.getElementById('inputAdminPin').focus();
+            document.getElementById('inputAdminPin').value = '';
+            document.getElementById('pinModal').classList.remove('hidden');
         }
 
         function closeAdminModal() {
             document.getElementById('pinModal').classList.add('hidden');
         }
 
-        function verifyAdminPin(e) {
-            e.preventDefault();
-            const entered = document.getElementById('inputAdminPin').value;
-            if (entered === getAdminPin()) {
+        function verifyAdminPin(event) {
+            event.preventDefault();
+            const pinEntered = document.getElementById('inputAdminPin').value;
+            if (pinEntered === getAdminPin()) {
                 closeAdminModal();
                 showAdminDashboard();
             } else {
                 document.getElementById('pinError').classList.remove('hidden');
             }
+        }
+
+        function showAdminDashboard() {
+            // Hide candidate views
+            document.getElementById('landingPage').classList.add('hidden');
+            document.getElementById('testPage').classList.add('hidden');
+            document.getElementById('thankYouPage').classList.add('hidden');
+            document.getElementById('timerContainer').classList.add('hidden');
+
+            // Show admin view
+            document.getElementById('adminDashboard').classList.remove('hidden');
+
+            renderAdminTable();
         }
 
         function logoutAdmin() {
@@ -762,89 +826,95 @@
         }
 
         function openPinSettingsModal() {
-            document.getElementById('changePinModal').classList.remove('hidden');
             document.getElementById('newPinInput').value = '';
+            document.getElementById('changePinModal').classList.remove('hidden');
         }
 
         function closePinSettingsModal() {
             document.getElementById('changePinModal').classList.add('hidden');
         }
 
-        function saveNewPin(e) {
-            e.preventDefault();
-            const np = document.getElementById('newPinInput').value.trim();
-            if (np) {
-                localStorage.setItem('fym_admin_pin', np);
-                alert("Admin PIN-ը հաջողությամբ փոխվեց։");
+        function saveNewPin(event) {
+            event.preventDefault();
+            const newPin = document.getElementById('newPinInput').value.trim();
+            if (newPin) {
+                localStorage.setItem('fym_admin_pin', newPin);
+                alert("PIN կոդը հաջողությամբ փոխվել է։");
                 closePinSettingsModal();
             }
         }
 
-        function showAdminDashboard() {
-            document.getElementById('landingPage').classList.add('hidden');
-            document.getElementById('testPage').classList.add('hidden');
-            document.getElementById('thankYouPage').classList.add('hidden');
-            document.getElementById('adminDashboard').classList.remove('hidden');
+        function renderAdminTable() {
+            const logs = getCandidateLogs();
+            const tbody = document.getElementById('adminTableBody');
+            tbody.innerHTML = '';
 
-            loadAdminData();
-        }
-
-        function loadAdminData() {
-            const history = getCandidatesHistory();
-            document.getElementById('statTotalCandidates').textContent = history.length;
+            // Update Header KPI Cards
+            document.getElementById('statTotalCandidates').textContent = logs.length;
 
             let totalSecs = 0;
             let totalAlerts = 0;
 
-            history.forEach(c => {
-                totalSecs += (c.durationSeconds || 0);
-                totalAlerts += (c.security?.tabSwitches || 0) + (c.security?.copyAttempts || 0);
-            });
-
-            let avgSecs = history.length > 0 ? Math.round(totalSecs / history.length) : 0;
-            let m = Math.floor(avgSecs / 60);
-            let s = avgSecs % 60;
-            document.getElementById('statAvgDuration').textContent = `${m}:${s.toString().padStart(2, '0')}`;
-            document.getElementById('statSecurityAlerts').textContent = totalAlerts;
-
-            const tbody = document.getElementById('adminTableBody');
-            tbody.innerHTML = '';
-
-            if (history.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="10" class="py-6 text-center text-slate-400">Դեռևս գրանցված թեստային արդյունքներ չկան։</td></tr>`;
+            if (logs.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="10" class="py-8 text-center text-slate-400">
+                            Գրանցված թեստավորման արդյունքներ դեռևս չկան։
+                        </td>
+                    </tr>`;
+                document.getElementById('statAvgDuration').textContent = "0:00";
+                document.getElementById('statSecurityAlerts').textContent = "0";
                 return;
             }
 
-            history.forEach(c => {
-                const dateObj = new Date(c.startTime || Date.now());
-                const dateStr = dateObj.toLocaleDateString() + ' ' + dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                const durMin = Math.floor((c.durationSeconds || 0) / 60);
-                const durSec = (c.durationSeconds || 0) % 60;
-                const durFormatted = `${durMin}ր ${durSec}վ`;
+            logs.forEach(log => {
+                totalSecs += log.durationSeconds || 0;
+                const hasSecurityViolations = (log.security.tabSwitches > 0 || log.security.copyAttempts > 0);
+                if (hasSecurityViolations) totalAlerts++;
 
-                const s = c.scores || {};
-                const sec = c.security || {};
+                const mins = Math.floor(log.durationSeconds / 60);
+                const secs = log.durationSeconds % 60;
+                const durationFormatted = `${mins}:${secs.toString().padStart(2, '0')}`;
 
-                const row = document.createElement('tr');
-                row.className = "hover:bg-slate-50 transition";
-                row.innerHTML = `
-                    <td class="py-3 px-3.5 text-slate-500">${dateStr}</td>
-                    <td class="py-3 px-3.5 font-bold text-slate-900">${c.firstName} ${c.lastName}</td>
-                    <td class="py-3 px-3.5 text-slate-600">${c.position}</td>
-                    <td class="py-3 px-3.5 font-semibold text-slate-900">${durFormatted}</td>
-                    <td class="py-3 px-3.5 text-center font-bold text-slate-800">${s.Competing || 0}</td>
-                    <td class="py-3 px-3.5 text-center font-bold text-slate-800">${s.Collaborating || 0}</td>
-                    <td class="py-3 px-3.5 text-center font-bold text-slate-800">${s.Compromising || 0}</td>
-                    <td class="py-3 px-3.5 text-center font-bold text-slate-800">${s.Avoiding || 0}</td>
-                    <td class="py-3 px-3.5 text-center font-bold text-slate-800">${s.Accommodating || 0}</td>
-                    <td class="py-3 px-3.5">
-                        <span class="inline-block px-2 py-0.5 bg-slate-100 rounded text-[11px] text-slate-700">
-                            Tab: <strong>${sec.tabSwitches || 0}</strong> | Away: <strong>${sec.totalTimeAwaySeconds || 0}s</strong> | Copy: <strong>${sec.copyAttempts || 0}</strong>
-                        </span>
-                    </td>
+                // Security Badge Render
+                let securityBadge = `<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    <i class="fa-solid fa-shield-halved mr-1"></i> Նորմալ
+                </span>`;
+
+                if (hasSecurityViolations) {
+                    securityBadge = `<div class="space-y-1">
+                        ${log.security.tabSwitches > 0 ? `<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
+                            <i class="fa-solid fa-window-restore mr-1"></i> ${log.security.tabSwitches} անգամ դուրս (${log.security.totalTimeAwaySeconds}վ)
+                        </span><br>` : ''}
+                        ${log.security.copyAttempts > 0 ? `<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-rose-100 text-rose-800 border border-rose-300">
+                            <i class="fa-solid fa-copy mr-1"></i> ${log.security.copyAttempts} պատճենում
+                        </span>` : ''}
+                    </div>`;
+                }
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition border-b border-slate-200";
+                tr.innerHTML = `
+                    <td class="py-4 px-4 text-xs font-medium text-slate-500">${log.date}</td>
+                    <td class="py-4 px-4 font-bold text-slate-900">${log.firstName} ${log.lastName}</td>
+                    <td class="py-4 px-4 font-medium text-slate-700">${log.position}</td>
+                    <td class="py-4 px-4 text-xs font-semibold text-slate-600">${durationFormatted}</td>
+                    <td class="py-4 px-4 text-center font-bold text-slate-800 bg-slate-50/50">${log.scores.Competing}</td>
+                    <td class="py-4 px-4 text-center font-bold text-slate-800 bg-slate-50/50">${log.scores.Collaborating}</td>
+                    <td class="py-4 px-4 text-center font-bold text-slate-800 bg-slate-50/50">${log.scores.Compromising}</td>
+                    <td class="py-4 px-4 text-center font-bold text-slate-800 bg-slate-50/50">${log.scores.Avoiding}</td>
+                    <td class="py-4 px-4 text-center font-bold text-slate-800 bg-slate-50/50">${log.scores.Accommodating}</td>
+                    <td class="py-4 px-4">${securityBadge}</td>
                 `;
-                tbody.appendChild(row);
+                tbody.appendChild(tr);
             });
+
+            // Update KPI summary stats
+            const avgSecs = Math.round(totalSecs / logs.length);
+            const avgMins = Math.floor(avgSecs / 60);
+            const avgRemSecs = avgSecs % 60;
+            document.getElementById('statAvgDuration').textContent = `${avgMins}:${avgRemSecs.toString().padStart(2, '0')}`;
+            document.getElementById('statSecurityAlerts').textContent = totalAlerts;
         }
     </script>
 </body>
