@@ -654,7 +654,7 @@ with col_home:
         st.session_state.active_page = "Թեստ"
         st.rerun()
 with col_portal:
-    nav_label = "HR Portal" if st.session_state.active_page == "Թեստ" else "Թեստ"
+    nav_label = "🔒HR Portal" if st.session_state.active_page == "Թեստ" else "Թեստ"
     if st.button(nav_label, key="bottom_portal_button", use_container_width=True):
         st.session_state.active_page = "HR մուտք" if st.session_state.active_page == "Թեստ" else "Թեստ"
         st.rerun()
