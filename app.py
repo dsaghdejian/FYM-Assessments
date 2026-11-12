@@ -23,7 +23,7 @@ DURATION_SECONDS = 15 * 60
 RETENTION_DAYS = 5 * 365
 
 st.set_page_config(
-    page_title="FYM Hospitality Group | Թեստ",
+    page_title="FYM Hospitality Group | Թեստի Հարթակ",
     page_icon="F",
     layout="centered",
     initial_sidebar_state="collapsed",
@@ -119,7 +119,7 @@ def render_header():
         st.markdown("**FYM HOSPITALITY GROUP**", unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('<div class="fym-kicker">FYM HOSPITALITY GROUP</div>', unsafe_allow_html=True)
-    st.markdown('<div class="fym-title">Թեստ</div>', unsafe_allow_html=True)
+    st.markdown('<div class="fym-title">Թեստի Հարթակ</div>', unsafe_allow_html=True)
 
 render_header()
 
@@ -358,7 +358,7 @@ def completion(status):
             st.session_state.pop(f"answer_{q}", None)
         st.rerun()
 
-st.session_state.setdefault("active_page", "Թեստ")
+st.session_state.setdefault("active_page", "Թեստի Հարթակ")
 page = st.session_state.active_page
 
 if page == "HR մուտք":
