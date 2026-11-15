@@ -592,7 +592,7 @@ else:
         completion(st.session_state.finished_status)
     elif not st.session_state.get("candidate_id"):
         st.markdown('<div class="fym-subtitle">Խնդրում ենք ուշադիր կարդալ պահանջները և պատասխանել բոլոր հարցերին։</div>', unsafe_allow_html=True)
-        st.markdown('<div class="fym-card">Յուրաքանչյուր հարցի համար ընտրեք միայն մեկ պատասխան՝ A կամ B։ Թեստը բաղկացած է 30 հարցից և պետք է ավարտվի 15 րոպեի ընթացքում։ **Ուշադրություն․ թեստից դուրս գալու դեպքերը գրանցվում են:**
+        st.markdown('<div class="fym-card">Յուրաքանչյուր հարցի համար ընտրեք միայն մեկ պատասխան՝ A կամ B։ Թեստը բաղկացած է 30 հարցից և պետք է ավարտվի 15 րոպեի ընթացքում։ Ուշադրություն․ թեստից դուրս գալու դեպքերը գրանցվում են:
 </div>', unsafe_allow_html=True)
         with st.form("candidate_details"):
             first = st.text_input("Անուն", key="cand_first_name")
