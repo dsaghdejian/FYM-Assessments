@@ -650,7 +650,7 @@ else:
             radio_index = 1
 
         choice = st.radio(
-            "Ընտրեք մեկ տարբերակ",
+            "Ընտրեք մեկ տարբերակ:",
             ["A", "B"],
             format_func=lambda x: f"{x}. {a_text if x == 'A' else b_text}",
             index=radio_index,
